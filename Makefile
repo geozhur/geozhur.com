@@ -17,13 +17,13 @@ analyse:
 	composer exec phpstan analyse -v -- --memory-limit=-1
 
 lint:
-	composer exec phpcs -v
+	./vendor/bin/sail composer exec phpcs -v
 
 lint-fix:
-	composer exec phpcbf -v
+	./vendor/bin/sail composer exec phpcbf -v
 
 deploy:
-	git push heroku master
+	php vendor/bin/envoy run deploy
 
 env-prepare:
 	cp -n .env.example .env || true
@@ -39,6 +39,12 @@ ide-helper:
 	php artisan ide-helper:gen
 	php artisan ide-helper:meta
 	php artisan ide-helper:mod -n
+
+ide-helper-sail:
+	./vendor/bin/sail php artisan ide-helper:eloquent
+	./vendor/bin/sail php artisan ide-helper:gen
+	./vendor/bin/sail php artisan ide-helper:meta
+	./vendor/bin/sail php artisan ide-helper:mod -n
 
 lint-js:
 	npm run lint-js
