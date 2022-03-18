@@ -1,8 +1,8 @@
-@servers(['main' => ['geozhur@82.146.39.214']])
+@servers(['main' => ['geozhur']])
 
 
 @setup
-@endse
+@endsetup
 @task('deploy', ['on' => 'main'])
     cd /data/geozhur/www/
     php artisan down
