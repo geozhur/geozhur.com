@@ -5,7 +5,6 @@
 @endsetup
 @task('deploy', ['on' => 'main'])
     cd /data/geozhur/www/
-    php artisan down
     git checkout master
     git pull
     composer install --no-dev --no-interaction --no-plugins --no-progress --no-scripts --optimize-autoloader
